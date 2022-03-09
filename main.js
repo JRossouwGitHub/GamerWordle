@@ -1,6 +1,6 @@
 const chars = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'Enter', 'Backspace']
 let playerScore = []
-const letters = 5
+const letters = 10
 const attempts = 5
 let index = Math.floor((Math.random() * words[letters][1].length) + 0)
 const set = words[letters][1]
@@ -88,6 +88,7 @@ const submitWord = (_row) => {
     let value = table[_row]
     let guess = new Array(letters)
     let correct = 0
+
     for(let i = 0; i < value.length; i++){
         if(word.includes(value[i])){
             if(word[i] == value[i]){
@@ -95,18 +96,19 @@ const submitWord = (_row) => {
                 document.getElementById('btn'+value[i]).style.backgroundColor = 'green'
                 correct++
             } else {
-                //try
-                //let x = word.filter(item => item == value[i]).length
-                //word.some(item => item.includes(temp)) && x > 1
-                //x--
-                //guess[i] = [value[i], 1]
-                //else guess[i] = [value[i], 0]
+                // let temp = value[i]
+                // if(guess.some(item => item.includes(temp)) && word.filter(item => item == temp).length <= 1){
+                //     guess[i] = [temp, 0]
+                // } else {
+                //     guess[i] = [temp, 1]
+                //     document.getElementById('btn'+temp).style.backgroundColor = 'orange'
+                // }
                 let temp = value[i]
-                if(guess.some(item => item.includes(temp)) && word.filter(item => item == value[i]).length <= 1){
-                    guess[i] = [value[i], 0]
+                if(word.some(item => item.includes(temp)) && word.filter(item => item == temp).length > 1){
+                    guess[i] = [temp, 1]
+                    document.getElementById('btn'+temp).style.backgroundColor = 'orange'
                 } else {
-                    guess[i] = [value[i], 1]
-                    document.getElementById('btn'+value[i]).style.backgroundColor = 'orange'
+                    guess[i] = [temp, 0]
                 }
             }
         } else {
