@@ -97,6 +97,9 @@ const submitWord = (_row) => {
             } else {
                 let temp = value[i]
                 if(guess.some(item => item.includes(temp)) && word.filter(item => item == value[i]).length <= 1){
+                    //let x = word.filter(item => item == value[i]).length
+                    //try word.some(item => item.includes(temp)) && x > 1
+                    //x--
                     guess[i] = [value[i], 0]
                 } else {
                     guess[i] = [value[i], 1]
