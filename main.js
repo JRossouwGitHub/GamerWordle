@@ -95,11 +95,14 @@ const submitWord = (_row) => {
                 document.getElementById('btn'+value[i]).style.backgroundColor = 'green'
                 correct++
             } else {
+                //try
+                //let x = word.filter(item => item == value[i]).length
+                //word.some(item => item.includes(temp)) && x > 1
+                //x--
+                //guess[i] = [value[i], 1]
+                //else guess[i] = [value[i], 0]
                 let temp = value[i]
                 if(guess.some(item => item.includes(temp)) && word.filter(item => item == value[i]).length <= 1){
-                    //let x = word.filter(item => item == value[i]).length
-                    //try word.some(item => item.includes(temp)) && x > 1
-                    //x--
                     guess[i] = [value[i], 0]
                 } else {
                     guess[i] = [value[i], 1]
