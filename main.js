@@ -1,16 +1,23 @@
+let index = Math.floor((Math.random() * words.length) + 0)
 const chars = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'Enter', 'Backspace']
-const word = ['H', 'E', 'L', 'L', 'O']
+let word = [...words[index]]
 let playerScore = []
 const letters = 5
 const attempts = 5
 const table = new Array(attempts)
 const game = document.getElementById('game')
 const gameover = document.getElementById('gameover')
-gameover.addEventListener('click', function(){gameover.style.display = 'none'})
+gameover.addEventListener('click', function(){
+    gameover.style.display = 'none'
+    win.style.display = 'none'
+    lose.style.display = 'none'
+})
 const win = document.getElementById('win')
 const lose = document.getElementById('lose')
 const score = document.getElementById('score')
-const avgScore = document.getElementById('avgScore')
+const avgScoreW = document.getElementById('avgScoreW')
+const avgScoreL = document.getElementById('avgScoreL')
+const displayWord = document.getElementById('word')
 
 for(let i = 0; i < attempts; i++){
     table[i] = new Array(letters)
@@ -84,18 +91,20 @@ const submitWord = (_row) => {
         if(word.includes(value[i])){
             if(word[i] == value[i]){
                 guess[i] = [value[i], 2]
+                document.getElementById('btn'+value[i]).style.backgroundColor = 'green'
                 correct++
             } else {
                 let temp = value[i]
-                console.log(word.filter(item => item == value[i]).length)
                 if(guess.some(item => item.includes(temp)) && word.filter(item => item == value[i]).length <= 1){
                     guess[i] = [value[i], 0]
                 } else {
                     guess[i] = [value[i], 1]
+                    document.getElementById('btn'+value[i]).style.backgroundColor = 'orange'
                 }
             }
         } else {
             guess[i] = [value[i], 0]
+            document.getElementById('btn'+value[i]).style.backgroundColor = 'grey'
         }
     }
     if(correct == letters){
@@ -105,17 +114,18 @@ const submitWord = (_row) => {
                 document.getElementById("row"+_row).childNodes[i].childNodes[0].setAttribute('class', 'blank')
             }
         }
+        playerScore.push(_row + 1)
         gameover.style.display = 'block'
         win.style.display = 'block'
-        playerScore.push(_row + 1)
         score.innerHTML = 'Score: ' + playerScore[playerScore.length-1]
-        avgScore.innerHTML = 'Average Score: ' + (playerScore.reduce(function(a, b) { return a + b; }, 0)/playerScore.length).toFixed(2)
+        avgScoreW.innerHTML = 'Average Score: ' + (playerScore.reduce(function(a, b) { return a + b; }, 0)/playerScore.length).toFixed(2)
     } else {
         if(_row == 4){
+            playerScore.push(_row + 1)
             gameover.style.display = 'block'
             lose.style.display = 'block'
-            playerScore.push(_row + 1)
-            avgScore.innerHTML = 'Average Score: ' + (playerScore.reduce(function(a, b) { return a + b; }, 0)/playerScore.lengths).toFixed(2)
+            displayWord.innerHTML = 'Word: ' + word.join('')
+            avgScoreL.innerHTML = 'Average Score: ' + (playerScore.reduce(function(a, b) { return a + b; }, 0)/playerScore.length).toFixed(2)
         }
         for(let i = 0; i < guess.length; i++){
             if(guess[i][1] == 2){
@@ -135,8 +145,15 @@ const submitWord = (_row) => {
 
 const playAgain = () => {
     row = 0
+    index = Math.floor((Math.random() * words.length) + 0)
+    word = [...words[index]]
     for(let i = 0; i < table.length; i++){
         for(let j = 0; j < letters; j++){
+            try{
+                document.getElementById('btn'+table[i][j]).style.backgroundColor = 'white'
+            } catch(e){
+                null
+            }
             table[i][j] = null
             document.getElementById("row"+i).childNodes[j].childNodes[0].innerHTML = 'X'
             document.getElementById("row"+i).childNodes[j].childNodes[0].setAttribute('class', 'blank')

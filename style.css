@@ -67,6 +67,9 @@ button{
     font-size: 24px;
     padding: 5px 5px;
     cursor: pointer;
+    background-color: white;
+    border: 0.125rem solid black;
+    border-radius: 5px;
 }
 
 #controls{
