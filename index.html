@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Wordle Copy</title>
+</head>
+<body>
+    <div id="game">
+    </div>
+    <div id="keyboard">
+        <div id="set">
+            <button onclick="addLetter({key: 'q', preventDefault: function(){event.preventDefault()}})">Q</button>
+            <button onclick="addLetter({key: 'w', preventDefault: function(){event.preventDefault()}})">W</button>
+            <button onclick="addLetter({key: 'e', preventDefault: function(){event.preventDefault()}})">E</button>
+            <button onclick="addLetter({key: 'r', preventDefault: function(){event.preventDefault()}})">R</button>
+            <button onclick="addLetter({key: 't', preventDefault: function(){event.preventDefault()}})">T</button>
+            <button onclick="addLetter({key: 'y', preventDefault: function(){event.preventDefault()}})">Y</button>
+            <button onclick="addLetter({key: 'u', preventDefault: function(){event.preventDefault()}})">U</button>
+            <button onclick="addLetter({key: 'i', preventDefault: function(){event.preventDefault()}})">I</button>
+            <button onclick="addLetter({key: 'o', preventDefault: function(){event.preventDefault()}})">O</button>
+            <button onclick="addLetter({key: 'p', preventDefault: function(){event.preventDefault()}})">P</button>
+        </div>
+        <div id="set">
+            <button onclick="addLetter({key: 'a', preventDefault: function(){event.preventDefault()}})">A</button>
+            <button onclick="addLetter({key: 's', preventDefault: function(){event.preventDefault()}})">S</button>
+            <button onclick="addLetter({key: 'd', preventDefault: function(){event.preventDefault()}})">D</button>
+            <button onclick="addLetter({key: 'f', preventDefault: function(){event.preventDefault()}})">F</button>
+            <button onclick="addLetter({key: 'g', preventDefault: function(){event.preventDefault()}})">G</button>
+            <button onclick="addLetter({key: 'h', preventDefault: function(){event.preventDefault()}})">H</button>
+            <button onclick="addLetter({key: 'j', preventDefault: function(){event.preventDefault()}})">J</button>
+            <button onclick="addLetter({key: 'k', preventDefault: function(){event.preventDefault()}})">K</button>
+            <button onclick="addLetter({key: 'l', preventDefault: function(){event.preventDefault()}})">L</button>
+        </div>
+        <div id="set">
+            <button onclick="addLetter({key: 'z', preventDefault: function(){event.preventDefault()}})">Z</button>
+            <button onclick="addLetter({key: 'x', preventDefault: function(){event.preventDefault()}})">X</button>
+            <button onclick="addLetter({key: 'c', preventDefault: function(){event.preventDefault()}})">C</button>
+            <button onclick="addLetter({key: 'v', preventDefault: function(){event.preventDefault()}})">V</button>
+            <button onclick="addLetter({key: 'b', preventDefault: function(){event.preventDefault()}})">B</button>
+            <button onclick="addLetter({key: 'n', preventDefault: function(){event.preventDefault()}})">N</button>
+            <button onclick="addLetter({key: 'm', preventDefault: function(){event.preventDefault()}})">M</button>
+        </div>
+        <div id="controls">
+            <button onclick="addLetter({key: 'Backspace', preventDefault: function(){event.preventDefault()}})">Backspace</button>
+            <button onclick="addLetter({key: 'Enter', preventDefault: function(){event.preventDefault()}})">Enter</button>
+        </div>
+    </div>
+    <div id="gameover">
+        <div id="contents">
+            <div id="win">
+                <h1 id="title">Winner Winner!</h1>
+                <h3 id="score">Score:</h3>
+                <h3 id="avgScore">Average Score:</h3>
+                <button onclick="playAgain()">Play Again!</button>
+            </div>
+            <div id="lose">
+                <h1 id="title">You Lost!</h1>
+                <h3 id="word">Word: </h3>
+                <h3 id="avgScore">Average Score: </h3>
+                <button onclick="playAgain()">Play Again!</button>
+            </div>
+        </div>  
+    </div>
+    <script src="main.js" type="text/javascript"></script>
+</body>
+</html>

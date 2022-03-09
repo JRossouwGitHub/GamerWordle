@@ -1,0 +1,145 @@
+html, body{
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#game{
+    width: max-content;
+    height: max-content;
+    margin: 0 auto;
+    padding-top: 15px;
+}
+
+.row{
+    display: block;
+}
+
+.cell{
+    display: inline-block;
+    width: 75px;
+    height: 75px;
+    border: 1px solid black;
+    margin: 2px 2px;
+}
+
+#text{
+    display: block;
+    width: max-content;
+    height: 90%;
+    font-size: 60px;
+    margin: 0 auto;
+}
+
+.blank{
+    color: white;
+}
+
+.show{
+    color: black
+}
+
+.green{
+    background-color: green;
+}
+
+.orange{
+    background-color: orange;
+}
+
+.grey{
+    background-color: grey;
+}
+
+#keyboard{
+    margin: 20px
+}
+
+#set{
+    width: max-content;
+    height: max-content;
+    margin: 5px auto;
+}
+
+button{
+    width: 50px;
+    font-size: 24px;
+    padding: 5px 5px;
+    cursor: pointer;
+}
+
+#controls{
+    width: max-content;
+    height: max-content;
+    margin: 5px auto;
+}
+
+#controls button{
+    width: max-content;
+    font-size: 35px;
+}
+
+#gameover{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    background-color: rgba(0,0,0,0.25);
+    z-index: 1;
+}
+
+#contents{
+    display: block;
+    width: max-content;
+    margin: 0 auto;
+    margin-top: 30px;
+    background-color: white;
+    padding: 30px;
+    z-index: 99;
+}
+
+#win{
+    display: none;
+    width: max-content;
+    margin: 0 auto;
+}
+
+#win #title{
+    color: rgb(255, 230, 0);
+}
+
+#win button{
+    display: block;
+    width: max-content;
+    margin: 0 auto;
+    font-size: 20px;
+    background-color: green;
+    color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+#lose{
+    display: none;
+    width: max-content;
+    margin: 0 auto;
+}
+
+#lose #title{
+    color: rgb(255, 100, 0);
+}
+
+#lose button{
+    display: block;
+    width: max-content;
+    margin: 0 auto;
+    font-size: 20px;
+    background-color: green;
+    color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+}
