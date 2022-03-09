@@ -1,6 +1,6 @@
 const chars = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'Enter', 'Backspace']
 let playerScore = []
-const letters = 10
+const letters = 5
 const attempts = 5
 let index = Math.floor((Math.random() * words[letters][1].length) + 0)
 const set = words[letters][1]
@@ -70,7 +70,6 @@ const addLetter = (e) => {
                     switch(letter){
                         case 'Enter':
                             submitWord(row)
-                            row++
                             break
                         default:
                             console.log('Nothing happened')
@@ -88,67 +87,71 @@ const submitWord = (_row) => {
     let value = table[_row]
     let guess = new Array(letters)
     let correct = 0
-
-    for(let i = 0; i < value.length; i++){
-        if(word.includes(value[i])){
-            if(word[i] == value[i]){
-                guess[i] = [value[i], 2]
-                document.getElementById('btn'+value[i]).style.backgroundColor = 'green'
-                correct++
-            } else {
-                // let temp = value[i]
-                // if(guess.some(item => item.includes(temp)) && word.filter(item => item == temp).length <= 1){
-                //     guess[i] = [temp, 0]
-                // } else {
-                //     guess[i] = [temp, 1]
-                //     document.getElementById('btn'+temp).style.backgroundColor = 'orange'
-                // }
-                let temp = value[i]
-                if(word.some(item => item.includes(temp)) && word.filter(item => item == temp).length > 1){
-                    guess[i] = [temp, 1]
-                    document.getElementById('btn'+temp).style.backgroundColor = 'orange'
+    if(set.includes(value.join(''))){
+        row++
+        for(let i = 0; i < value.length; i++){
+            if(word.includes(value[i])){
+                if(word[i] == value[i]){
+                    guess[i] = [value[i], 2]
+                    document.getElementById('btn'+value[i]).style.backgroundColor = 'green'
+                    correct++
                 } else {
-                    guess[i] = [temp, 0]
+                    // let temp = value[i]
+                    // if(guess.some(item => item.includes(temp)) && word.filter(item => item == temp).length <= 1){
+                    //     guess[i] = [temp, 0]
+                    // } else {
+                    //     guess[i] = [temp, 1]
+                    //     document.getElementById('btn'+temp).style.backgroundColor = 'orange'
+                    // }
+                    let temp = value[i]
+                    if(word.some(item => item.includes(temp)) && word.filter(item => item == temp).length > 1){
+                        guess[i] = [temp, 1]
+                        document.getElementById('btn'+temp).style.backgroundColor = 'orange'
+                    } else {
+                        guess[i] = [temp, 0]
+                    }
+                }
+            } else {
+                guess[i] = [value[i], 0]
+                document.getElementById('btn'+value[i]).style.backgroundColor = 'grey'
+            }
+        }
+        if(correct == letters){
+            for(let i = 0; i < guess.length; i++){
+                if(guess[i][1] == 2){
+                    document.getElementById("row"+_row).childNodes[i].setAttribute('class', 'cell green')
+                    document.getElementById("row"+_row).childNodes[i].childNodes[0].setAttribute('class', 'blank')
                 }
             }
-        } else {
-            guess[i] = [value[i], 0]
-            document.getElementById('btn'+value[i]).style.backgroundColor = 'grey'
-        }
-    }
-    if(correct == letters){
-        for(let i = 0; i < guess.length; i++){
-            if(guess[i][1] == 2){
-                document.getElementById("row"+_row).childNodes[i].setAttribute('class', 'cell green')
-                document.getElementById("row"+_row).childNodes[i].childNodes[0].setAttribute('class', 'blank')
-            }
-        }
-        playerScore.push(_row + 1)
-        gameover.style.display = 'block'
-        win.style.display = 'block'
-        score.innerHTML = 'Score: ' + playerScore[playerScore.length-1]
-        avgScoreW.innerHTML = 'Average Score: ' + (playerScore.reduce(function(a, b) { return a + b; }, 0)/playerScore.length).toFixed(2)
-    } else {
-        if(_row == 4){
             playerScore.push(_row + 1)
             gameover.style.display = 'block'
-            lose.style.display = 'block'
-            displayWord.innerHTML = 'Word: ' + word.join('')
-            avgScoreL.innerHTML = 'Average Score: ' + (playerScore.reduce(function(a, b) { return a + b; }, 0)/playerScore.length).toFixed(2)
-        }
-        for(let i = 0; i < guess.length; i++){
-            if(guess[i][1] == 2){
-                document.getElementById("row"+_row).childNodes[i].setAttribute('class', 'cell green')
-                document.getElementById("row"+_row).childNodes[i].childNodes[0].setAttribute('class', 'blank')
+            win.style.display = 'block'
+            score.innerHTML = 'Score: ' + playerScore[playerScore.length-1]
+            avgScoreW.innerHTML = 'Average Score: ' + (playerScore.reduce(function(a, b) { return a + b; }, 0)/playerScore.length).toFixed(2)
+        } else {
+            if(_row == 4){
+                playerScore.push(_row + 1)
+                gameover.style.display = 'block'
+                lose.style.display = 'block'
+                displayWord.innerHTML = 'Word: ' + word.join('')
+                avgScoreL.innerHTML = 'Average Score: ' + (playerScore.reduce(function(a, b) { return a + b; }, 0)/playerScore.length).toFixed(2)
             }
-            else if(guess[i][1] == 1){
-                document.getElementById("row"+_row).childNodes[i].setAttribute('class', 'cell orange')
-                document.getElementById("row"+_row).childNodes[i].childNodes[0].setAttribute('class', 'blank')
-            } else {
-                document.getElementById("row"+_row).childNodes[i].setAttribute('class', 'cell grey')
-                document.getElementById("row"+_row).childNodes[i].childNodes[0].setAttribute('class', 'blank')
+            for(let i = 0; i < guess.length; i++){
+                if(guess[i][1] == 2){
+                    document.getElementById("row"+_row).childNodes[i].setAttribute('class', 'cell green')
+                    document.getElementById("row"+_row).childNodes[i].childNodes[0].setAttribute('class', 'blank')
+                }
+                else if(guess[i][1] == 1){
+                    document.getElementById("row"+_row).childNodes[i].setAttribute('class', 'cell orange')
+                    document.getElementById("row"+_row).childNodes[i].childNodes[0].setAttribute('class', 'blank')
+                } else {
+                    document.getElementById("row"+_row).childNodes[i].setAttribute('class', 'cell grey')
+                    document.getElementById("row"+_row).childNodes[i].childNodes[0].setAttribute('class', 'blank')
+                }
             }
         }
+    } else {
+        console.log('Not A Word!')
     }
 }
 
