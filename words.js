@@ -10,6 +10,11 @@ const words = [
     'CLAPP', 
     'TRASH', 
     'SCUFF']],
-    [6, []],
+    [6, [
+        'GAMERS', 
+        'MONKAS', 
+        'CLAPPS', 
+        'TRASHS', 
+        'SCUFFS']],
     [7, []]
 ]
