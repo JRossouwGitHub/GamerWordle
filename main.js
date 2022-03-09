@@ -96,7 +96,7 @@ const submitWord = (_row) => {
                     guess[i] = [value[i], 2]
                     document.getElementById('btn'+value[i]).style.backgroundColor = 'green'
                     correct++
-                    if(guess.filter(item => item.includes(temp)).length > 1 && word.some(item => item.includes(temp)) && word.filter(item => item == temp).length == 1){
+                    if(guess.filter(item => item.includes(temp)).length > 1 && word.filter(item => item == temp).length == 1){
                         let a = guess.filter(item => item.includes(temp) && item.includes(1))
                         guess[guess.indexOf(a[0])] = [temp, 0]
                     }
