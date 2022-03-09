@@ -80,15 +80,19 @@ const submitWord = (_row) => {
     let value = table[_row]
     let guess = new Array(letters)
     let correct = 0
-    const _word = word
     for(let i = 0; i < value.length; i++){
         if(word.includes(value[i])){
             if(word[i] == value[i]){
                 guess[i] = [value[i], 2]
                 correct++
             } else {
-                guess[i] = [value[i], 1]
-                //need to check for repeating letters
+                let temp = value[i]
+                console.log(word.filter(item => item == value[i]).length)
+                if(guess.some(item => item.includes(temp)) && word.filter(item => item == value[i]).length <= 1){
+                    guess[i] = [value[i], 0]
+                } else {
+                    guess[i] = [value[i], 1]
+                }
             }
         } else {
             guess[i] = [value[i], 0]
