@@ -1,7 +1,15 @@
 const words = [
-    'HELLO', 
-    'TESTS', 
-    'AUDIO', 
-    'SLATE', 
-    'CRATE'
+    [0, []],
+    [1, []],
+    [2, []],
+    [3, []],
+    [4, []],
+    [5,[
+    'GAMER', 
+    'MONKA', 
+    'CLAPP', 
+    'TRASH', 
+    'SCUFF']],
+    [6, []],
+    [7, []]
 ]

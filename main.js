@@ -1,9 +1,10 @@
-let index = Math.floor((Math.random() * words.length) + 0)
 const chars = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'Enter', 'Backspace']
-let word = [...words[index]]
 let playerScore = []
 const letters = 5
 const attempts = 5
+let index = Math.floor((Math.random() * words[letters][1].length) + 0)
+const set = words[letters][1]
+let word = [...set[index]]
 const table = new Array(attempts)
 const game = document.getElementById('game')
 const gameover = document.getElementById('gameover')
@@ -145,8 +146,9 @@ const submitWord = (_row) => {
 
 const playAgain = () => {
     row = 0
-    index = Math.floor((Math.random() * words.length) + 0)
-    word = [...words[index]]
+    index = Math.floor((Math.random() * words[letters][1].length) + 0)
+    const newSet = words[letters][1]
+    word = [...newSet[index]]
     for(let i = 0; i < table.length; i++){
         for(let j = 0; j < letters; j++){
             try{

@@ -12,6 +12,14 @@ html, body{
     padding-top: 15px;
 }
 
+#gameTitle{
+    display: block;
+    width: max-content;
+    margin: 0 auto;
+    padding-bottom: 25px;
+    font-size: 40px;
+}
+
 .row{
     display: block;
 }
