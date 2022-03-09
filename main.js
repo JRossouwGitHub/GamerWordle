@@ -87,27 +87,33 @@ const submitWord = (_row) => {
     let value = table[_row]
     let guess = new Array(letters)
     let correct = 0
-    if(set.includes(value.join(''))){
+    if(set.includes(value.join('')) || commonWords.includes(value.join('').toLowerCase())){
         row++
         for(let i = 0; i < value.length; i++){
+            let temp = value[i]
             if(word.includes(value[i])){
                 if(word[i] == value[i]){
                     guess[i] = [value[i], 2]
                     document.getElementById('btn'+value[i]).style.backgroundColor = 'green'
                     correct++
+                    if(guess.filter(item => item.includes(temp)).length > 1 && word.some(item => item.includes(temp)) && word.filter(item => item == temp).length == 1){
+                        let a = guess.filter(item => item.includes(temp) && item.includes(1))
+                        guess[guess.indexOf(a[0])] = [temp, 0]
+                    }
                 } else {
-                    // let temp = value[i]
-                    // if(guess.some(item => item.includes(temp)) && word.filter(item => item == temp).length <= 1){
-                    //     guess[i] = [temp, 0]
-                    // } else {
-                    //     guess[i] = [temp, 1]
-                    //     document.getElementById('btn'+temp).style.backgroundColor = 'orange'
-                    // }
-                    let temp = value[i]
                     if(word.some(item => item.includes(temp)) && word.filter(item => item == temp).length > 1){
                         guess[i] = [temp, 1]
                         document.getElementById('btn'+temp).style.backgroundColor = 'orange'
-                    } else {
+                    }
+                    if(word.some(item => item.includes(temp)) && word.filter(item => item == temp).length == 1){
+                        if(guess.some(item => item.includes(temp))){
+                            guess[i] = [temp, 0]
+                        } else {
+                            guess[i] = [temp, 1]
+                            document.getElementById('btn'+temp).style.backgroundColor = 'orange'
+                        }
+                    }
+                    else {
                         guess[i] = [temp, 0]
                     }
                 }
