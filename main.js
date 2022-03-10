@@ -6,8 +6,8 @@ let playerScore = []
 const letters = 5
 const attempts = 5
 //Get random number and get set from game params
-let index = Math.floor((Math.random() * words[letters][1].length) + 0)
-const set = words[letters][1]
+let index = Math.floor((Math.random() * customWords[letters][1].length) + 0)
+const set = customWords[letters][1]
 //Randomly chose a word from the set
 let word = [...set[index]]
 //Create empty table
@@ -186,7 +186,7 @@ const submitWord = (_row) => {
             avgScoreW.innerHTML = 'Average Score: ' + (playerScore.reduce(function(a, b) { return a + b; }, 0)/playerScore.length).toFixed(2)
         } else {
             //If the submission was on the last row but did not win
-            if(_row == 4){
+            if(_row == (attempts - 1)){
                 //Show lose game screen
                 playerScore.push(_row + 1)
                 gameover.style.display = 'block'

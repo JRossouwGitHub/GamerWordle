@@ -1,4 +1,4 @@
-const words = [
+const customWords = [
     [0, []],
     [1, []],
     [2, []],
