@@ -99,7 +99,6 @@ const addLetter = (e) => {
                             submitWord(row)
                             break
                         default:
-                            console.log('Nothing happened')
                             break
                     }
                 }
@@ -215,7 +214,15 @@ const submitWord = (_row) => {
         }
     } else {
         //If the submission/guess was not found in the custom/common list
-        console.log('Not A Word!')
+        const naw = document.getElementById('naw')
+        naw.style.visibility = 'visible'
+        naw.style.animationDuration = '1.5s'
+        naw.style.animationName = 'slidein'
+        setTimeout(()=>{
+            naw.style.visibility = 'hidden'
+            naw.style.animationDuration = '0s'
+            naw.style.animationName = ''
+        }, 1499)
     }
 }
 
@@ -224,7 +231,7 @@ const playAgain = () => {
     //Reset game params
     row = 0
     index = Math.floor((Math.random() * words[letters][1].length) + 0)
-    const newSet = words[letters][1]
+    const newSet = customWords[letters][1]
     word = [...newSet[index]]
     //Change visuals back to initial values
     for(let i = 0; i < table.length; i++){

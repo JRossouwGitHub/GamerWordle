@@ -12,12 +12,39 @@ html, body{
     padding-top: 15px;
 }
 
+@keyframes slidein {
+    from {
+        top: 0;
+    }
+  
+    to {
+        top: 50px;
+    }
+  }
+
+#naw{
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 200px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 25px;
+    color: red;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    visibility: hidden;
+}
+
 #gameTitle{
     display: block;
     width: max-content;
     margin: 0 auto;
     padding-bottom: 25px;
     font-size: 40px;
+    text-align: center;
 }
 
 .row{
