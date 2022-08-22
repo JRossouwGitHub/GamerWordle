@@ -49,6 +49,8 @@ html, body{
 
 .row{
     display: block;
+    width: max-content;
+    margin: 0 auto;
 }
 
 .cell{

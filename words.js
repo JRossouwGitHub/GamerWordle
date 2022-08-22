@@ -3,68 +3,19 @@ const customWords = [
     [1, []],
     [2, []],
     [3, [
-        'BIT',
-        'BOT',
-        'LUL',
-        'BAN',
-        'MOD',
-        'POG',
-        'SUB',
-        'MOB'
+        'CRV',
     ]],
     [4, [
-        'CLIP',
-        'HOST',
-        'KEKW',
-        'LULW',
-        'HYPE',
-        'MALD',
-        'RAID',
-        'HACK',
-        'BUFF',
-        'NERF',
-        'NOOB'
+        'MILK',
     ]],
     [5,[
-        'KAPPA',  
-        'TRASH', 
-        'SCUFF',
-        'PRIME',
-        'CHEER',
-        'MONKA',
-        'TROLL',
-        'SCRUB'
+        'MYDNA',
     ]],
     [6, [
-        'GAMERS', 
-        'MONKAS',
-        'AIMBOT',
-        'HACKER',
-        'BUFFED',
-        'NERFED',
-        'FEEDER'
+        'MYHERD',
     ]],
     [7, [
-        'BITRATE',
-        'POGGERS',
-        'CLAPPED',
-        'SCUFFED'
-    ]],
-    [8, [
-        'JEBAITED',
-        'KREYGASM',
-        'POGCHAMP',
-        'RAIDBOSS'
-    ]],
-    [9, [
-        'AFFILIATE',
-        'PEPEHANDS'
-    ]],
-    [10, [
-        'BOOKKEEPER',
-        'BOOKKEEPER',
-        'BOOKKEEPER',
-        'BOOKKEEPER'
+        'AMBREED',
     ]]
 ]
 

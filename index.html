@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="words.js" type="text/javascript"></script>
-    <title>Wordle Copy</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+    <title>CRV Wordle</title>
 </head>
 <body>
     <div id="game">
         <p id="naw">Not A Word!</p>
-        <p id="gameTitle">Wordle for Gamers</p>
+        <p id="gameTitle"><strong><span style="color: #004280;">C</span><span style="color: #980B2C;">R</span><span style="color: #004280;">V</span> Wordle!</strong></p>
     </div>
     <div id="keyboard">
         <div id="set">
@@ -55,8 +56,8 @@
         <div id="contents">
             <div id="win">
                 <h1 id="title">Winner Winner!</h1>
-                <h3 id="score">Score:</h3>
-                <h3 id="avgScoreW">Average Score:</h3>
+                <!-- <h3 id="score">Score:</h3>
+                <h3 id="avgScoreW">Average Score:</h3> -->
                 <button onclick="playAgain()">Play Again!</button>
             </div>
             <div id="lose">

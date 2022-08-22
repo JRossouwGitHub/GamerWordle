@@ -3,13 +3,27 @@ const chars = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 
 //Player score kept in array to calc avg score
 let playerScore = []
 //Game params
-const letters = 5
-const attempts = 5
+let date = new Date()
+//Set seed for random number bases on date string
+let seedString = "" + date.getDay() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ""
+Math.seedrandom(seedString)
+//Math.seedrandom() alters Math.random()
+let size = (Math.floor(Math.random() * (7 - 3 + 1) + 3))
+const letters = size
+const attempts = size
 //Get random number and get set from game params
-let index = Math.floor((Math.random() * customWords[letters][1].length) + 0)
-const set = customWords[letters][1]
+
+//USE THIS FOR CUSTOM WORDS
+// let index = Math.floor((Math.random() * customWords[letters][1].length) + 0)
+// const set = customWords[letters][1]
+
+//USE THIS FOR COMMON WORDS (include custom words here?)
+let index = Math.floor((Math.random() * (commonWords.filter(_word => _word.length == size).length - 1)) + 0)
+const set = commonWords.filter(_word => _word.length == size)
+
 //Randomly chose a word from the set
 let word = [...set[index]]
+console.log(word)
 //Create empty table
 const table = new Array(attempts)
 //Select game div
@@ -149,7 +163,7 @@ const submitWord = (_row) => {
                         document.getElementById('btn'+temp).style.backgroundColor = 'orange'
                     }
                     //If there is only 1 of that letter in the word to guess
-                    if(word.some(item => item.includes(temp)) && word.filter(item => item == temp).length == 1){
+                    else if(word.some(item => item.includes(temp)) && word.filter(item => item == temp).length == 1){
                         if(guess.some(item => item.includes(temp))){
                             guess[i] = [temp, 0]
                         } else {
@@ -230,7 +244,7 @@ const submitWord = (_row) => {
 const playAgain = () => {
     //Reset game params
     row = 0
-    index = Math.floor((Math.random() * words[letters][1].length) + 0)
+    index = Math.floor((Math.random() * customWords[letters][1].length) + 0)
     const newSet = customWords[letters][1]
     word = [...newSet[index]]
     //Change visuals back to initial values
