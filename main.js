@@ -6,20 +6,22 @@ let playerScore = []
 let date = new Date()
 //Set seed for random number bases on date string
 let seedString = "" + date.getDay() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ""
-Math.seedrandom(seedString)
+let seedSize = new Math.seedrandom(seedString)
+let seedIndex = new Math.seedrandom(seedString)
 //Math.seedrandom() alters Math.random()
-let size = (Math.floor(Math.random() * (7 - 3 + 1) + 3))
+let size = (Math.floor(seedSize()  * (7 - 3 + 1) + 3)) //(Math.floor(Math.random() * (7 - 3 + 1) + 3))
+console.log(size)
 const letters = size
-const attempts = size
+const attempts =  size //size
 //Get random number and get set from game params
 
 //USE THIS FOR CUSTOM WORDS
-// let index = Math.floor((Math.random() * customWords[letters][1].length) + 0)
-// const set = customWords[letters][1]
+let index = Math.floor((seedIndex() * customWords[letters][1].length) + 0)
+const set = customWords[letters][1]
 
 //USE THIS FOR COMMON WORDS (include custom words here?)
-let index = Math.floor((Math.random() * (commonWords.filter(_word => _word.length == size).length - 1)) + 0)
-const set = commonWords.filter(_word => _word.length == size)
+// let index = Math.floor((seedIndex() * (commonWords.filter(_word => _word.length == size).length - 1)) + 0)
+// const set = commonWords.filter(_word => _word.length == size)
 
 //Randomly chose a word from the set
 let word = [...set[index]]
@@ -162,20 +164,24 @@ const submitWord = (_row) => {
                     if(word.some(item => item.includes(temp)) && word.filter(item => item == temp).length > 1){
                         guess[i] = [temp, 1]
                         document.getElementById('btn'+temp).style.backgroundColor = 'orange'
-                    }
+                    } 
                     //If there is only 1 of that letter in the word to guess
-                    else if(word.some(item => item.includes(temp)) && word.filter(item => item == temp).length == 1){
+                    if(word.some(item => item.includes(temp)) && word.filter(item => item == temp).length == 1){
                         if(guess.some(item => item.includes(temp))){
                             guess[i] = [temp, 0]
                         } else {
                             guess[i] = [temp, 1]
                             document.getElementById('btn'+temp).style.backgroundColor = 'orange'
                         }
-                    }
-                    //If that letter is not in the word to guess but somehow made it past the first if
-                    else {
+                    } 
+                    
+                    if(word.some(item => item.includes(temp)) && word.filter(item => item == temp).length <= 0){
+                        //If that letter is not in the word to guess but somehow made it past the first if
                         guess[i] = [temp, 0]
                     }
+                    
+
+
                 }
             } else {
                 //If that letter is not in the word to guess
@@ -245,9 +251,18 @@ const submitWord = (_row) => {
 const playAgain = () => {
     //Reset game params
     row = 0
-    index = Math.floor((Math.random() * customWords[letters][1].length) + 0)
-    const newSet = customWords[letters][1]
+
+    //USE THIS FOR CUSTOM WORDS 
+    // index = Math.floor((Math.random() * customWords[letters][1].length) + 0)
+    // const newSet = customWords[letters][1]
+
+    //USE THIS FOR COMMON WORDS (include custom words here?)
+    index = Math.floor((Math.random() * (commonWords.filter(_word => _word.length == size).length - 1)) + 0)
+    const newSet = commonWords.filter(_word => _word.length == size)
+
     word = [...newSet[index]]
+    word = word.map(_word => _word = _word.toUpperCase())
+    console.log(word)
     //Change visuals back to initial values
     for(let i = 0; i < table.length; i++){
         for(let j = 0; j < letters; j++){
