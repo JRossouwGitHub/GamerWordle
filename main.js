@@ -5,7 +5,7 @@ let playerScore = []
 //Game params
 let date = new Date()
 //Set seed for random number bases on date string
-let seedString = "" + date.getDay() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ""
+let seedString = "" + date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ""
 let seedSize = new Math.seedrandom(seedString)
 let seedIndex = new Math.seedrandom(seedString)
 
