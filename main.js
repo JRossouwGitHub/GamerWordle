@@ -23,6 +23,7 @@ const set = commonWords.filter(_word => _word.length == size)
 
 //Randomly chose a word from the set
 let word = [...set[index]]
+word = word.map(_word => _word = _word.toUpperCase())
 console.log(word)
 //Create empty table
 const table = new Array(attempts)
