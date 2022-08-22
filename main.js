@@ -8,11 +8,10 @@ let date = new Date()
 let seedString = "" + date.getDay() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ""
 let seedSize = new Math.seedrandom(seedString)
 let seedIndex = new Math.seedrandom(seedString)
-//Math.seedrandom() alters Math.random()
-let size = (Math.floor(seedSize()  * (7 - 3 + 1) + 3)) //(Math.floor(Math.random() * (7 - 3 + 1) + 3))
-console.log(size)
+
+let size = (Math.floor(seedSize()  * (7 - 3 + 1) + 3))
 const letters = size
-const attempts =  size //size
+const attempts =  size
 //Get random number and get set from game params
 
 //USE THIS FOR CUSTOM WORDS
@@ -26,7 +25,7 @@ const set = customWords[letters][1]
 //Randomly chose a word from the set
 let word = [...set[index]]
 word = word.map(_word => _word = _word.toUpperCase())
-console.log(word)
+
 //Create empty table
 const table = new Array(attempts)
 //Select game div
@@ -262,7 +261,6 @@ const playAgain = () => {
 
     word = [...newSet[index]]
     word = word.map(_word => _word = _word.toUpperCase())
-    console.log(word)
     //Change visuals back to initial values
     for(let i = 0; i < table.length; i++){
         for(let j = 0; j < letters; j++){
